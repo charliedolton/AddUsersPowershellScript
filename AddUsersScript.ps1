@@ -46,7 +46,7 @@ foreach ($line in $UniqueUserList)
     $HomeDirectoryLocation = $HomeDirectory + $fullName
     
     try {
-        New-ADUser -Name $fullName -GivenName $FirstName -Surname $LastName -Path $OUPathForAccounts -AccountPassword $EncPass -HomeDirectory $HomeDirectoryLocation -PostalCode 0
+        New-ADUser -Name $fullName -GivenName $FirstName -Surname $LastName -Path $OUPathForAccounts -AccountPassword $EncPass -Enabled $true -HomeDirectory $HomeDirectoryLocation -PostalCode 0
         Set-ADUser -Identity $fullName
         "$Time User $fullName was created successfully." | Out-File $ScriptsFilePath\userCreation.log -Append
     } catch {
